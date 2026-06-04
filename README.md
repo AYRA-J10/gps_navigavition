@@ -12,6 +12,9 @@ Vehicle navigation without GPS using:
 - IMU alone error: 2.17 cells
 - Magnetic alone error: 10.82 cells
 - Kalman fusion error: 2.29 cells (78% improvement)
+- *simulation includes random noise. Every run different*
+  -to Get Stable, Repeatable Results:Add this line at the very top of the script
+     "" rng(42);  % Fix random seed — same "random" numbers every run ""
 
 ## Files
 - `gps_denied_navigation.m` - Run this in MATLAB
