@@ -14,6 +14,7 @@ Vehicle navigation without GPS using:
 - Kalman fusion error: 2.29 cells (78% improvement)
 - *simulation includes random noise. Every run different*
   -to Get Stable, Repeatable Results: Add this line at the very top of the script
+  
      "" **rng(42);  % Fix random seed — same "random" numbers every run** ""
 
 ## Files
