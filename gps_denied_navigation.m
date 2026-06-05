@@ -1,3 +1,4 @@
+rng(42);  % Makes results reproducible every run
 % Day 23: IMU + Magnetic Matching + Kalman Filter Fusion
 clear; close all; clc;
 
@@ -8,7 +9,7 @@ total_cells = map_size(1) * map_size(2);
 
 % Simulation parameters
 dt = 0.1;           % time step (seconds)
-total_time = 50;    % simulate 50 seconds
+total_time = 500;    % simulate 500 seconds
 time = 0:dt:total_time;
 N = length(time);
 
@@ -77,7 +78,7 @@ kf_y(1) = imu_pos_y(1);
 % Process noise (how much we trust IMU)
 Q = 0.001;
 % Measurement noise (how much we trust magnetic matching)
-R_mag = 100.0;   % smaller = trust magnetic more
+R_mag = 25.0;   % smaller = trust magnetic more
 
 for k = 2:N
     % --- Prediction (using IMU delta) ---
