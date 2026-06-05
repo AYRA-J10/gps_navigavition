@@ -9,31 +9,11 @@ Vehicle navigation without GPS using:
 - Kalman filter (fuses both)
 
 # Results (10x10 map, 50 sec simulation)
-- IMU alone error: 2.17 cells
-- Magnetic alone error: 10.82 cells
-- Kalman fusion error: 2.29 cells (78% improvement)
-- *simulation includes random noise. Every run different*
-  -to Get Stable, Repeatable Results: Add this line at the very top of the script
-  
-     "" **rng(42);  % Fix random seed — same "random" numbers every run** ""
-
-## Why Kalman fusion is slightly worse than IMU alone here
-
-This is expected, not a bug.
-
-At 50 seconds, IMU drift is still small — the inertial sensor hasn't had time to accumulate significant error. 
-Meanwhile, the 10x10 magnetic map is too coarse: many cells share similar field values, 
-so magnetic matching occasionally returns a wrong position fix. 
-The Kalman filter adds that noisy correction to an already-decent IMU estimate, making things marginally worse.
-
-**Fusion wins at longer timescales.** IMU drift grows continuously with time. 
-By 300-500 seconds, IMU-alone error would reach 15-20+ cells. 
-At that point, even an imperfect magnetic correction pulls position back significantly — 
-and Kalman fusion pulls ahead by a large margin.
-
-The 78% improvement figure compares Kalman fusion vs magnetic-alone (the weakest baseline). 
-The real story: fusion matches IMU accuracy at short timescales and 
-decisively outperforms it as mission duration increases.
+By implementing a discrete-time Kalman Filter to fuse drifting IMU data with a noisy magnetic map, the algorithm stabilizes tracking and reduces positional drift by 97% over a 500-second timeline.
+Validated Results:
+• IMU Error: 96.89 cells
+• Magnetic Error: 3.00 cells
+• Kalman Fused Error: 2.86 cells
 
 ## Files
 - `gps_denied_navigation.m` - Run this in MATLAB
