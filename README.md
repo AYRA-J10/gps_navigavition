@@ -8,7 +8,7 @@ Vehicle navigation without GPS using:
 - Magnetic field matching (no drift, but ambiguous)
 - Kalman filter (fuses both)
 
-# Results (10x10 map, 50 sec simulation)
+# Simulation Performance Analysis
 By implementing a discrete-time Kalman Filter to fuse drifting IMU data with a noisy magnetic map, the algorithm stabilizes tracking and reduces positional drift by 97% over a 500-second timeline.
 Validated Results:
 • IMU Error: 96.89 cells
